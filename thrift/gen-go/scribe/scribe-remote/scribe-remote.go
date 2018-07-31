@@ -14,7 +14,7 @@ import (
         "strconv"
         "strings"
         "github.com/apache/thrift/lib/go/thrift"
-        "github.com/openzipkin-contrib/zipkin-go-opentracing/thrift/gen-go/scribe"
+        "github.com/evo3cx/zipkin-go-opentracing/thrift/gen-go/scribe"
 )
 
 

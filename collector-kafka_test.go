@@ -1,7 +1,6 @@
 package zipkintracer
 
 import (
-	"context"
 	"errors"
 	"testing"
 	"time"
@@ -9,7 +8,7 @@ import (
 	"github.com/Shopify/sarama"
 	"github.com/apache/thrift/lib/go/thrift"
 
-	"github.com/openzipkin-contrib/zipkin-go-opentracing/thrift/gen-go/zipkincore"
+	"github.com/evo3cx/zipkin-go-opentracing/thrift/gen-go/zipkincore"
 )
 
 type stubProducer struct {
@@ -168,7 +167,7 @@ func deserializeSpan(t *testing.T, e sarama.Encoder) *zipkincore.Span {
 	s := zipkincore.NewSpan()
 	mb := thrift.NewTMemoryBufferLen(len(bytes))
 	_, _ = mb.Write(bytes)
-	_ = mb.Flush(context.Background())
+	_ = mb.Flush()
 	pt := thrift.NewTBinaryProtocolTransport(mb)
 	err = s.Read(pt)
 	if err != nil {
